@@ -9,7 +9,7 @@ driver:
   instance_type: c4.large ##t2.micro
   tags:
     # Replace YOURNAME and YOURCOMPANY here
-    Name: "Chef Training Node for <YOURNAME>, Rees"
+    Name: "Workstation for <YOURNAME>, Rees"
     user: Administrator
     X-Contact: "Anthony Rees"
     X-Application: "apac"
