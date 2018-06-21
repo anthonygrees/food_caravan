@@ -9,7 +9,7 @@ driver:
   instance_type: c4.large ##t2.micro
   tags:
     # Replace YOURNAME and YOURCOMPANY here
-    Name: "Rees-Workstation"
+    Name: "Chef Training Node for <YOURNAME>, Rees"
     user: Administrator
     X-Contact: "Anthony Rees"
     X-Application: "apac"
@@ -17,7 +17,7 @@ driver:
     X-Customer: "Rees"
     X-Project: "BJC-Demo"
     X-Termination-Date: "2018-07-20T12:04:30Z"
-    X-TTL: 72
+    X-TTL: 4
 
 transport:
     username: administrator
@@ -33,11 +33,11 @@ verifier:
 
 platforms:
   - name: windows-2016
-      driver:
+    driver:
       image_id: ami-ba6e1bc2
 
 suites:
-  - name: workstation1
+  - name: default
     run_list:
       - recipe[food_caravan::default]
     verifier:
