@@ -1,23 +1,43 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: chef_demo_2x
+  region: us-west-2
+  security_group_ids: sg-e1f2c090
+  subnet_id: subnet-0f591955
+  associate_public_ip: true
+  instance_type: c4.large ##t2.micro
+  tags:
+    # Replace YOURNAME and YOURCOMPANY here
+    Name: "Rees-Workstation"
+    user: Administrator
+    X-Contact: "Anthony Rees"
+    X-Application: "apac"
+    X-Dept: "sales"
+    X-Customer: "Rees"
+    X-Project: "BJC-Demo"
+    X-Termination-Date: "2018-07-20T12:04:30Z"
+    X-TTL: 72
+
+transport:
+    username: administrator
+    ssh_key:  ~\.ssh\id_rsa
+    communicator: winrm
 
 provisioner:
   name: chef_zero
-  # You may wish to disable always updating cookbooks in CI or other testing environments.
-  # For example:
-  #   always_update_cookbooks: <%= !ENV['CI'] %>
-  always_update_cookbooks: true
 
 verifier:
   name: inspec
+  format: documentation
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7
+  - name: windows-2016
+      driver:
+      image_id: ami-ba6e1bc2
 
 suites:
-  - name: default
+  - name: workstation1
     run_list:
       - recipe[food_caravan::default]
     verifier:
